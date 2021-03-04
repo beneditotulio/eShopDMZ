@@ -1,0 +1,60 @@
+﻿@model IEnumerable<eShopDMZ.Models.TBFornecedor>
+
+@{
+    ViewData["Title"] = "Fornecedores";
+}
+
+
+<div class="spinner-grow" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<h1>Lista de Fornecedores</h1>
+<p class="float-left">
+    <a asp-action="Create" class="btn btn-outline-primary">Novo Registo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th>
+                Imagem
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+
+                <td>
+                    <img src = "~/images/20210107_111124.jpg" height="80" width="160"/>
+                    @*<a href=""><img src="./img/images/20210107_111124.jpg"></a>*@
+                </td>
+                <td class="float-left">
+                    <a asp-action="Edit" asp-route-id="@item.IDFornecedor" class=" btn btn-success">Editar</a> |
+                    @* <a asp-action="Details" asp-route-id="@item.IDFornecedor">Detalhes</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.IDFornecedor" class=" btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+@*@foreach (var item in Model)
+{
+    <h2>@item.Nome</h2>
+}*@
